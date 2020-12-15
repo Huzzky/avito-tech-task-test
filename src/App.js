@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useLayoutEffect } from 'react'
+import { connect } from 'react-redux'
+import './App.css'
+import { Header } from './components/Header/Header'
+import PageWithPhotos from './components/PageWithPhoto/PageWithPhotos'
+import { getPhotosFromApi } from './store/acitions/getPhotosFromApi'
 
-function App() {
+const App = (props) => {
+  useLayoutEffect(() => {
+    props.getPhotos()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [null])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <PageWithPhotos />
     </div>
-  );
+  )
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  getPhotos: () => dispatch(getPhotosFromApi()),
+})
+
+export default connect(null, mapDispatchToProps)(App)
