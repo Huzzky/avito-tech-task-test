@@ -11,3 +11,9 @@ export const ERROR_PHOTO_COMMENT = 'ERROR_PHOTO_COMMENT'
 export const REQUEST_SEND_PHOTO_COMMENT = 'REQUEST_SEND_PHOTO_COMMENT'
 export const SUCCESS_SEND_PHOTO_COMMENT = 'SUCCESS_SEND_PHOTO_COMMENT'
 export const ERROR_SEND_PHOTO_COMMENT = 'ERROR_SEND_PHOTO_COMMENT'
+
+export const optionsDate = {
+  day: 'numeric',
+  month: 'numeric',
+  year: 'numeric',
+}

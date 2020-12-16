@@ -1,36 +1,39 @@
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getCommentsPhotoForApi } from '../../../store/acitions/getAPI/getCommentsPhotoFromApi'
-import { ModalWithComments } from './ModalWithComments'
+import ModalWindow from './ModalWindow'
 
 const ModalLoader = ({
   isFetchingCommentsPhoto,
   returnError,
   id,
+  getCommentAndPhoto,
   dataComments,
 }) => {
-  useLayoutEffect(() => {
-    getCommentsPhotoForApi(id)
-    console.log(id)
-  })
+  console.log(dataComments)
   useEffect(() => {
-    console.log('Было что-то')
-  }, [dataComments])
+    getCommentAndPhoto(id)
+  }, [getCommentAndPhoto, id])
 
   return isFetchingCommentsPhoto ? (
-    <h1>Загрузка комментариев</h1>
+    <h1>Загрузка</h1>
   ) : returnError ? (
-    <h1>Ошибка загрузки</h1>
+    <h1>Ошибка сети</h1>
+  ) : Object.keys(dataComments).length > 0 ? (
+    <>
+      <ModalWindow />
+    </>
   ) : (
-    <ModalWithComments />
+    <h1>Подзагрузка</h1>
   )
 }
 
 ModalLoader.propTypes = {
-  id: PropTypes.any,
-  isFetchingCommentsPhoto: PropTypes.any,
-  returnError: PropTypes.any,
+  getCommentAndPhoto: PropTypes.func,
+  id: PropTypes.number,
+  isFetchingCommentsPhoto: PropTypes.bool,
+  returnError: PropTypes.bool,
 }
 
 const mapStoreToProps = (store) => {

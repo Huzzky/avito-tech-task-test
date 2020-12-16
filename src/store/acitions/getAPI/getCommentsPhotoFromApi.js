@@ -14,7 +14,7 @@ const getCommentsPhotoForApi = (id) => {
       .then((data) => {
         dispatch({
           type: SUCCESS_PHOTO_COMMENT,
-          data,
+          data: data,
         })
       })
       .catch((error) => {

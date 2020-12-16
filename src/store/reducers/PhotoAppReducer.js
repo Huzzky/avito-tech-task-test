@@ -13,7 +13,7 @@ const initialState = {
   isFetchingCommentsPhoto: false,
   returnError: false,
   dataPhotos: [],
-  dataComments: [],
+  dataComments: {},
   id: 0,
 }
 
@@ -51,7 +51,7 @@ export default function PhotoAppReducer(
     case SUCCESS_PHOTO_COMMENT:
       return {
         ...state,
-        dataComments: [],
+        dataComments: data,
         isFetchingCommentsPhoto: false,
       }
     case ERROR_PHOTO_COMMENT:

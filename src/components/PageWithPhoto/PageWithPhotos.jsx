@@ -2,14 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import PhotosGrid from './PhotosGrid/PhotosGrid'
+import ModalLoader from './Modal/ModalLoader'
 
-const PageWithPhotos = ({ isFetchingPhotos, returnError, idSelectedPhoto }) => {
+const PageWithPhotos = ({ isFetchingPhotos, returnError, id }) => {
   return isFetchingPhotos ? (
     <h1>Загрузка...</h1>
   ) : returnError ? (
     <h1>Ошибка 404</h1>
   ) : (
-    <PhotosGrid />
+    <>
+      {id === 0 ? <></> : <ModalLoader />}
+      <PhotosGrid />
+    </>
   )
 }
 
@@ -22,7 +26,7 @@ const mapStateToProps = (store) => {
   return {
     isFetchingPhotos: store.PhotoAppReducer.isFetchingPhotos,
     returnError: store.PhotoAppReducer.returnError,
-    idSelectedPhoto: store.PhotoAppReducer.id,
+    id: store.PhotoAppReducer.id,
   }
 }
 
