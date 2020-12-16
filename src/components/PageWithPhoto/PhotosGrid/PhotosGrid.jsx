@@ -2,16 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './styles/index.scss'
+import { selectPhoto } from '../../../store/acitions/selectImage'
+// import ModalLoader from '../Modal/ModalLoader'
+import { getCommentsPhotoForApi } from '../../../store/acitions/getAPI/getCommentsPhotoFromApi'
 
-const PhotosGrid = ({ data }) => {
+const PhotosGrid = ({ data, selectPhoto, getCommentAndPhoto }) => {
   return (
     <div className="block-photos">
       <div className="block-photos__block-grid">
         {data.map((index, key) => {
-          console.log(index, key)
           return (
             <div key={key}>
-              <img width="100%" src={index.url} alt={index.id} />
+              <img
+                onClick={() => {
+                  getCommentAndPhoto(index.id)
+                }}
+                src={index.url}
+                alt={index.id}
+              />
             </div>
           )
         })}
@@ -21,7 +29,8 @@ const PhotosGrid = ({ data }) => {
 }
 
 PhotosGrid.propTypes = {
-  data: PropTypes.array.isRequired,
+  data: PropTypes.array,
+  selectPhoto: PropTypes.func,
 }
 
 const mapStateToProps = (store) => {
@@ -30,4 +39,9 @@ const mapStateToProps = (store) => {
   }
 }
 
-export default connect(mapStateToProps)(PhotosGrid)
+const mapDispatchToProps = (dispatch) => ({
+  selectPhoto: (id) => dispatch(selectPhoto(id)),
+  getCommentAndPhoto: (id) => dispatch(getCommentsPhotoForApi(id)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotosGrid)

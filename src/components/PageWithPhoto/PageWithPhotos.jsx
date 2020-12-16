@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import PhotosGrid from './PhotosGrid/PhotosGrid'
 
-const PageWithPhotos = ({ isFetchingPhotos, returnError }) => {
+const PageWithPhotos = ({ isFetchingPhotos, returnError, idSelectedPhoto }) => {
   return isFetchingPhotos ? (
     <h1>Загрузка...</h1>
   ) : returnError ? (
@@ -22,6 +22,7 @@ const mapStateToProps = (store) => {
   return {
     isFetchingPhotos: store.PhotoAppReducer.isFetchingPhotos,
     returnError: store.PhotoAppReducer.returnError,
+    idSelectedPhoto: store.PhotoAppReducer.id,
   }
 }
 

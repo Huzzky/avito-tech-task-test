@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import './App.css'
 import { Header } from './components/Header/Header'
 import PageWithPhotos from './components/PageWithPhoto/PageWithPhotos'
-import { getPhotosFromApi } from './store/acitions/getPhotosFromApi'
+import { getPhotosFromApi } from './store/acitions/getAPI/getPhotosFromApi'
 
 const App = (props) => {
   useLayoutEffect(() => {

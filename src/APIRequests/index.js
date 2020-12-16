@@ -1,7 +1,13 @@
 import request from '../utils/request'
 
-export const fetchData = () =>
+export const fetchDataPhotos = () =>
   request({
-    url: '/',
+    url: '/images',
     method: 'get',
   })
+export const fetchCommentsPhoto = (id) => {
+  request({
+    url: `/images/${id}`,
+    method: 'get',
+  })
+}
