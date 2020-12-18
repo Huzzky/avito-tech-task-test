@@ -8,8 +8,6 @@ const ModalInputForm = () => {
 
 ModalInputForm.propTypes = {}
 
-const mapStateToProps = (state) => ({})
-
 const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalInputForm)
+export default connect(null, mapDispatchToProps)(ModalInputForm)

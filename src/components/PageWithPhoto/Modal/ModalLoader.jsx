@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useLayoutEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getCommentsPhotoForApi } from '../../../store/acitions/getAPI/getCommentsPhotoFromApi'
@@ -12,20 +12,28 @@ const ModalLoader = ({
   dataComments,
 }) => {
   console.log(dataComments)
-  useEffect(() => {
+  useLayoutEffect(() => {
     getCommentAndPhoto(id)
   }, [getCommentAndPhoto, id])
 
-  return isFetchingCommentsPhoto ? (
-    <h1>Загрузка</h1>
-  ) : returnError ? (
-    <h1>Ошибка сети</h1>
-  ) : Object.keys(dataComments).length > 0 ? (
-    <>
-      <ModalWindow />
-    </>
-  ) : (
-    <h1>Подзагрузка</h1>
+  return (
+    <div className="modal">
+      <div className="modal__bg">
+        <div className="modal__wrap">
+          {isFetchingCommentsPhoto ? (
+            <h1>Загрузка</h1>
+          ) : returnError ? (
+            <h1>Ошибка сети</h1>
+          ) : Object.keys(dataComments).length > 0 ? (
+            <>
+              <ModalWindow />
+            </>
+          ) : (
+            <h1>Подзагрузка</h1>
+          )}
+        </div>
+      </div>{' '}
+    </div>
   )
 }
 

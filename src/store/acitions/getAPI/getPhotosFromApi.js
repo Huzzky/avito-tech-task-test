@@ -1,4 +1,4 @@
-import { REQUEST_PHOTOS, SUCCESS_PHOTOS, ERROR_PHOTOS } from '../../const'
+import { REQUEST_PHOTOS, SUCCESS_PHOTOS, ERROR } from '../../const'
 import { fetchDataPhotos } from '../../../APIRequests'
 
 const getPhotosFromApi = () => {
@@ -15,7 +15,7 @@ const getPhotosFromApi = () => {
       })
       .catch((_) => {
         dispatch({
-          type: ERROR_PHOTOS,
+          type: ERROR,
         })
       })
   }

@@ -1,11 +1,10 @@
 import {
   REQUEST_PHOTOS,
   SUCCESS_PHOTOS,
-  ERROR_PHOTOS,
-  SELECT_PHOTO,
   REQUEST_PHOTO_COMMENT,
   SUCCESS_PHOTO_COMMENT,
-  ERROR_PHOTO_COMMENT,
+  SELECT_PHOTO,
+  ERROR,
 } from '../const'
 
 const initialState = {
@@ -14,7 +13,7 @@ const initialState = {
   returnError: false,
   dataPhotos: [],
   dataComments: {},
-  id: 0,
+  id: 237,
 }
 
 export default function PhotoAppReducer(
@@ -33,16 +32,6 @@ export default function PhotoAppReducer(
         dataPhotos: data,
         isFetchingPhotos: false,
       }
-    case ERROR_PHOTOS:
-      return {
-        ...state,
-        returnError: true,
-      }
-    case SELECT_PHOTO:
-      return {
-        ...state,
-        id: id,
-      }
     case REQUEST_PHOTO_COMMENT:
       return {
         ...state,
@@ -54,7 +43,12 @@ export default function PhotoAppReducer(
         dataComments: data,
         isFetchingCommentsPhoto: false,
       }
-    case ERROR_PHOTO_COMMENT:
+    case SELECT_PHOTO:
+      return {
+        ...state,
+        id: id,
+      }
+    case ERROR:
       return {
         ...state,
         returnError: true,

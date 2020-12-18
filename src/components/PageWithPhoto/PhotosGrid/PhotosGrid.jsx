@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import './styles/index.scss'
+import './styles/_index.scss'
 import { selectPhoto } from '../../../store/acitions/selectImage'
 
-const PhotosGrid = ({ data, selectPhoto, getCommentAndPhoto }) => {
+const PhotosGrid = memo(({ data, selectPhoto }) => {
   return (
     <div className="block-photos">
       <div className="block-photos__block-grid">
@@ -24,7 +24,7 @@ const PhotosGrid = ({ data, selectPhoto, getCommentAndPhoto }) => {
       </div>
     </div>
   )
-}
+})
 
 PhotosGrid.propTypes = {
   data: PropTypes.array,

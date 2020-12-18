@@ -1,6 +1,6 @@
 import { fetchCommentsPhoto } from '../../../APIRequests'
 import {
-  ERROR_PHOTO_COMMENT,
+  ERROR,
   REQUEST_PHOTO_COMMENT,
   SUCCESS_PHOTO_COMMENT,
 } from '../../const'
@@ -20,7 +20,7 @@ const getCommentsPhotoForApi = (id) => {
       .catch((error) => {
         console.log(error)
         dispatch({
-          type: ERROR_PHOTO_COMMENT,
+          type: ERROR,
         })
       })
   }

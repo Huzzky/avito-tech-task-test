@@ -5,13 +5,14 @@ import ModalPhoto from './ModalPhoto'
 import ModalInputForm from './ModalInputForm'
 import ModalComments from './ModalComments'
 import BtnCloseModal from './BtnCloseModal'
+import './styles/_modal.scss'
 
 const ModalWindow = ({ selectPhoto, data }) => {
   console.log(data)
   return (
     <div>
       <BtnCloseModal />
-      <div>
+      <div className="modal__block-info">
         <div>
           <ModalPhoto />
           {/* <ModalInputForm /> */}

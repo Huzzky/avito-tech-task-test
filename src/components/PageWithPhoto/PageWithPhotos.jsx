@@ -20,6 +20,7 @@ const PageWithPhotos = ({ isFetchingPhotos, returnError, id }) => {
 PageWithPhotos.propTypes = {
   isFetchingPhotos: PropTypes.bool.isRequired,
   returnError: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired,
 }
 
 const mapStateToProps = (store) => {
