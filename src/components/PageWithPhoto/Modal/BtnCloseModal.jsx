@@ -5,6 +5,7 @@ import { selectPhoto } from '../../../store/acitions/selectImage'
 function BtnCloseModal({ selectPhoto }) {
   return (
     <div
+      className="modal__btn-close"
       onClick={() => {
         selectPhoto(0)
       }}

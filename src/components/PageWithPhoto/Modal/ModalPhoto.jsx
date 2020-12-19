@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import './styles/_modal.scss'
 
 const ModalPhoto = ({ url }) => {
   return (
-    <div className="modal__photo">
-      <img src={url} alt="Modal_photo"></img>
+    <div className="block-form__block_photo">
+      <div className="block-form__photo">
+        <img src={url} alt="Modal_photo"></img>
+      </div>
     </div>
   )
 }

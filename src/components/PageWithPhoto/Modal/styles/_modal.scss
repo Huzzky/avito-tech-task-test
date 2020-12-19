@@ -1,4 +1,5 @@
 .modal {
+    font-family: 'Roboto';
     position: fixed;
     height: 100vh;
     width: 100vw;
@@ -10,24 +11,129 @@
 
     &__bg {
         position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 100vh;
         width: 100vw;
         top: 0;
         left: 0;
         background: rgba(0, 0, 0, .3);
+        z-index: 0;
     }
     &__wrap {
+        height: 70%;
         z-index: 2;
+        
         background: #fff;
-        padding: 2em;
-        margin: 5em;
     }
+    &__window-modal {
+        height: 100%;
+    }
+
+    &__block-cmnts {
+        margin-left: 15px;
+        overflow-y: scroll;
+        height: 100%;
+        width: 25em;
+    }
+    &__block-cmnts::-webkit-scrollbar-track{
+        -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+	    background-color: #ffffff;
+    }
+    &__block-cmnts::-webkit-scrollbar {
+        width: 6px;
+        background-color: #ffffff;
+    }
+    &__block-cmnts::-webkit-scrollbar-thumb
+    {
+	    border-radius: 5px;
+	    -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+	    background-color: rgb(204, 203, 203);
+    }
+    &__block-info {
+        display: flex;
+        margin-left: 2.5em;
+        margin-top: 1.8em;
+        height: 94.6%;
+    }
+    &__btn-close {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 32px;
+        margin-right: 10px;
+        margin-bottom: -30px;
+    }
+    &__block-form {
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        justify-content: space-around;
+    }
+    &__form-comments {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.block-form {
+    margin-top: -1.1em;
     &__photo {
         width: 600px;
         height: 400px;
         background-color: #C4C4C4;
     }
-    &__block-info {
-        display: flex;
+}
+
+.form-comments {
+    &__input-form {
+        font-family: "Roboto";
+        height: 40px;
+        color: #969696;
+        border: 1px solid #CCCCCC;
+        border-radius: 3px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        font-weight: 400;
+        padding-left: 10px;
+
+        &::placeholder {
+            color: #CCCCCC;
+        }
+        &--btn-send {
+            font-family: "Roboto";
+            height: 40px;
+            color: white;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: 400;
+            background-color: #4997D0;
+            border: none;
+            outline: none;
+        }
+        &--btn-send:active {
+            background-color: #37739e;
+        }
+    }
+}
+
+.comments {
+    &__block {
+        overflow-wrap: break-word;
+        margin:0;
+        margin-bottom: 20px;
+    }
+    &__date-comments {
+        margin: 0;
+        margin-bottom: 5px;
+        color: #999999;
+        font-weight: 400;
+        font-size: 16px;
+    }
+    &__txt-message {
+        margin: 0;
+        font-weight: 400;
+        font-size: 16px;
     }
 }

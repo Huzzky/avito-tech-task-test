@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { getCommentsPhotoForApi } from '../../../store/acitions/getAPI/getCommentsPhotoFromApi'
 import ModalWindow from './ModalWindow'
+import { selectPhoto } from '../../../store/acitions/selectImage'
+import { postNewCommentUnderPhoto } from '../../../store/acitions/postNewCommentUnderPhoto'
 
 const ModalLoader = ({
   isFetchingCommentsPhoto,
@@ -10,29 +12,31 @@ const ModalLoader = ({
   id,
   getCommentAndPhoto,
   dataComments,
+  closeModal,
+  testfunc,
 }) => {
   console.log(dataComments)
   useLayoutEffect(() => {
     getCommentAndPhoto(id)
+    testfunc(237, { okey: 'okey' })
   }, [getCommentAndPhoto, id])
 
   return (
     <div className="modal">
-      <div className="modal__bg">
-        <div className="modal__wrap">
-          {isFetchingCommentsPhoto ? (
-            <h1>Загрузка</h1>
-          ) : returnError ? (
-            <h1>Ошибка сети</h1>
-          ) : Object.keys(dataComments).length > 0 ? (
-            <>
-              <ModalWindow />
-            </>
-          ) : (
-            <h1>Подзагрузка</h1>
-          )}
-        </div>
-      </div>{' '}
+      <div className="modal__bg" onClick={() => closeModal()} />
+      <div className="modal__wrap">
+        {isFetchingCommentsPhoto ? (
+          <h1>Загрузка</h1>
+        ) : returnError ? (
+          <h1>Ошибка сети</h1>
+        ) : Object.keys(dataComments).length > 0 ? (
+          <>
+            <ModalWindow />
+          </>
+        ) : (
+          <h1>Подзагрузка</h1>
+        )}
+      </div>
     </div>
   )
 }
@@ -55,6 +59,8 @@ const mapStoreToProps = (store) => {
 
 const mapDispatchToProps = (dispatch) => ({
   getCommentAndPhoto: (id) => dispatch(getCommentsPhotoForApi(id)),
+  closeModal: (id) => dispatch(selectPhoto(0)),
+  testfunc: (id, object) => dispatch(postNewCommentUnderPhoto(id, object)),
 })
 
 export default connect(mapStoreToProps, mapDispatchToProps)(ModalLoader)

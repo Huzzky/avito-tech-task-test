@@ -5,11 +5,14 @@ import {
   SUCCESS_PHOTO_COMMENT,
   SELECT_PHOTO,
   ERROR,
+  REQUEST_SEND_PHOTO_COMMENT,
+  SUCCESS_SEND_PHOTO_COMMENT,
 } from '../const'
 
 const initialState = {
   isFetchingPhotos: false,
   isFetchingCommentsPhoto: false,
+  isSendingComment: false,
   returnError: false,
   dataPhotos: [],
   dataComments: {},
@@ -42,6 +45,16 @@ export default function PhotoAppReducer(
         ...state,
         dataComments: data,
         isFetchingCommentsPhoto: false,
+      }
+    case REQUEST_SEND_PHOTO_COMMENT:
+      return {
+        ...state,
+        isSendingComment: true,
+      }
+    case SUCCESS_SEND_PHOTO_COMMENT:
+      return {
+        ...state,
+        isSendingComment: false,
       }
     case SELECT_PHOTO:
       return {

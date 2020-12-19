@@ -7,17 +7,17 @@ import ModalComments from './ModalComments'
 import BtnCloseModal from './BtnCloseModal'
 import './styles/_modal.scss'
 
-const ModalWindow = ({ selectPhoto, data }) => {
+const ModalWindow = ({ data }) => {
   console.log(data)
   return (
-    <div>
+    <div className="modal__window-modal">
       <BtnCloseModal />
       <div className="modal__block-info">
-        <div>
+        <div className="modal__block-form block-form">
           <ModalPhoto />
-          {/* <ModalInputForm /> */}
+          <ModalInputForm />
         </div>
-        <div>
+        <div className="modal__block-cmnts">
           <ModalComments />
         </div>
       </div>
