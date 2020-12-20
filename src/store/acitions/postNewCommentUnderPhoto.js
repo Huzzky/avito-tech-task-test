@@ -11,8 +11,8 @@ const postNewCommentUnderPhoto = (id, objectComment) => {
       type: REQUEST_SEND_PHOTO_COMMENT,
     })
     sendNewCommentToServer(id, objectComment)
-      .then((data) => {
-        console.log(data)
+      .then((_) => {
+        // * Т.к. статус 204, то он ничего не вернет
         dispatch({
           type: SUCCESS_SEND_PHOTO_COMMENT,
         })

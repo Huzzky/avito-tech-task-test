@@ -19,14 +19,11 @@ export const fetchCommentsPhoto = async (id) => {
 }
 
 export const sendNewCommentToServer = async (id, objectComment) => {
-  console.log(id, objectComment)
-
   try {
-    console.log(123)
     const res = await request({
+      method: 'post',
       url: `/images/${id}/comments`,
-      method: 'POST',
-      body: { name: 'Введите имя', comment: 'Введите текст комментария' },
+      data: objectComment,
     })
     return Promise.resolve(res)
   } catch (error) {

@@ -16,7 +16,7 @@ const initialState = {
   returnError: false,
   dataPhotos: [],
   dataComments: {},
-  id: 237,
+  id: 0,
 }
 
 export default function PhotoAppReducer(

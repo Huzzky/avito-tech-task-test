@@ -18,7 +18,6 @@ const ModalLoader = ({
   console.log(dataComments)
   useLayoutEffect(() => {
     getCommentAndPhoto(id)
-    testfunc(237, { okey: 'okey' })
   }, [getCommentAndPhoto, id])
 
   return (
@@ -60,7 +59,6 @@ const mapStoreToProps = (store) => {
 const mapDispatchToProps = (dispatch) => ({
   getCommentAndPhoto: (id) => dispatch(getCommentsPhotoForApi(id)),
   closeModal: (id) => dispatch(selectPhoto(0)),
-  testfunc: (id, object) => dispatch(postNewCommentUnderPhoto(id, object)),
 })
 
 export default connect(mapStoreToProps, mapDispatchToProps)(ModalLoader)
